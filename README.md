@@ -1,5 +1,34 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Backend Connection (FastAPI)
+
+This frontend connects to the VisioDECT backend in `../backend`.
+
+1. Start backend:
+
+```bash
+cd ../backend
+pip install -r requirements.txt
+uvicorn app:app --reload --port 7860
+```
+
+2. Configure frontend API URL (optional, defaults to `http://localhost:7860`):
+
+```bash
+cp .env.example .env.local
+```
+
+3. Start frontend:
+
+```bash
+npm run dev
+```
+
+4. Verify connection:
+
+- Backend health: `http://localhost:7860/health`
+- Frontend live page: `http://localhost:3000/live`
+
 ## Getting Started
 
 First, run the development server:
