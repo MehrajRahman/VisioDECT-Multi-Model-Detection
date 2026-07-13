@@ -90,12 +90,12 @@ export default function HomePage() {
                 Launch AI Live System &rarr;
               </Link>
               <a
-                href="https://github.com/your-username/VisioDECT"
+                href="https://github.com/MehrajRahman/VisioDECT-Multi-Model-Detection"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-xl border border-white/20 bg-white/5 backdrop-blur-md px-8 py-3.5 text-sm font-bold text-white hover:bg-white/15 transition-all hover:scale-105 duration-300"
               >
-                GitHub Architecture
+                GitHub Repo
               </a>
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function HomePage() {
           <Link href="/live" className="text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white px-5 py-2.5 rounded-xl transition-all shadow-lg">○ Live Stream Detection</Link>
           <a href="#analytics" className="text-xs font-bold bg-white/5 hover:bg-white/15 text-slate-200 border border-white/10 px-5 py-2.5 rounded-xl transition-all">○ Compare Matrix</a>
           <a href="#kaggle" className="text-xs font-bold bg-white/5 hover:bg-white/15 text-slate-200 border border-white/10 px-5 py-2.5 rounded-xl transition-all">○ Kaggle Notebooks</a>
-          <a href="https://github.com/your-username/VisioDECT" target="_blank" rel="noreferrer" className="text-xs font-bold bg-white/5 hover:bg-white/15 text-slate-200 border border-white/10 px-5 py-2.5 rounded-xl transition-all">○ Documentation Code</a>
+          <a href="https://github.com/MehrajRahman/VisioDECT-Multi-Model-Detection" target="_blank" rel="noreferrer" className="text-xs font-bold bg-white/5 hover:bg-white/15 text-slate-200 border border-white/10 px-5 py-2.5 rounded-xl transition-all">○ Documentation Code</a>
         </div>
       </section>
 
@@ -325,7 +325,7 @@ export default function HomePage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-4 font-bold uppercase tracking-wider text-slate-500">
-            <a href="https://github.com/your-username/VisioDECT" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">GitHub</a>
+            <a href="https://github.com/MehrajRahman/VisioDECT-Multi-Model-Detection" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">GitHub</a>
             <a href="#kaggle" className="hover:text-white transition-colors">Notebooks</a>
             <a href="/live" className="hover:text-white transition-colors">Live Deployment</a>
             <a href="https://huggingface.co" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Inference Space</a>

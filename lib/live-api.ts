@@ -1,102 +1,43 @@
-// import { Client, handle_file } from "@gradio/client"; 
-// import { Detection, ModelName } from "./types";
-
-// const DEFAULT_BACKEND_URL = "https://rahmanmehraj627-visiodect-api.hf.space";
-
-// function getSpaceUrl(): string {
-//   const configured = process.env.NEXT_PUBLIC_API_URL?.trim();
-//   return configured && configured.length > 0 ? configured : DEFAULT_BACKEND_URL;
-// }
-
-// // Cast to `any` to prevent TS error 2559. The JS client expects `hf_token`, 
-// // but the TS types in your specific library version are missing it!
-// // Extract the exact options type that Client.connect expects
-// type GradioClientOptions = Parameters<typeof Client.connect>[1];
-
-// // Cast through `unknown` to safely bypass strict overlapping checks
-// // without triggering ESLint's "no-explicit-any" rule!
-// function getClientOptions(): GradioClientOptions {
-//     console.log("My Token is:", process.env.NEXT_PUBLIC_HF_TOKEN); // Check your browser console!
-  
-//   return {
-//     hf_token: process.env.NEXT_PUBLIC_HF_TOKEN,
-//   } as unknown as GradioClientOptions;
-// }
-
-// export interface FrameResult {
-//   frame_idx: number;
-//   timestamp_s: number;
-//   detections: { class: string; confidence: number; box: [number, number, number, number] }[];
-// }
-
-// export async function inferImage(modelName: ModelName, imageBlob: Blob): Promise<Detection[]> {
-//   // 1. Pass the token config
-//   const client = await Client.connect(getSpaceUrl(), getClientOptions());  
-  
-//   // 2. Wrap imageBlob with handle_file() to be safe
-//   const result = await client.predict("/infer_image", [handle_file(imageBlob), modelName]);
-  
-//   const data = result.data as unknown[];
-//   return (data[0] as Detection[]) ?? [];
-// }
-
-// export function streamVideoJob(
-//   modelName: ModelName,
-//   videoFile: Blob,
-//   onFrames: (frames: FrameResult[]) => void,
-//   onDone: () => void,
-//   onError?: (e: unknown) => void
-// ): () => void {
-//   let cancelled = false;
-
-//   (async () => {
-//     try {
-//       // 1. Pass the token config here too!
-//       const client = await Client.connect(getSpaceUrl(), getClientOptions());
-      
-//       // 2. Wrap handle_file in an object with a 'video' key for Pydantic validation
-//       const submission = client.submit("/infer_video", [
-//         { video: handle_file(videoFile) }, 
-//         modelName
-//       ]);
-
-//       for await (const event of submission) {
-//         if (cancelled) break;
-//         if (event.type === "data") {
-//           const eventData = (event as unknown as { data: unknown[] }).data;
-//           const frames = eventData?.[0] as FrameResult[] | { error: string } | undefined;
-//           if (Array.isArray(frames)) onFrames(frames);
-//           else if (frames && "error" in frames) throw new Error(frames.error);
-//         }
-//       }
-//       if (!cancelled) onDone();
-//     } catch (e) {
-//       if (!cancelled) onError?.(e);
-//     }
-//   })();
-
-//   return () => {
-//     cancelled = true;
-//   };
-// }
-
-// export async function checkHealth() {
-//   // 1. Pass the token config
-//   const client = await Client.connect(getSpaceUrl(), getClientOptions());
-  
-//   const result = await client.predict("/health", []);
-//   const data = result.data as unknown[];
-//   return data[0] as { status: string; models_loaded: string[] };
-// }
-
 import { Client } from "@gradio/client";
 import { Detection, ModelName } from "./types";
 
-const DEFAULT_BACKEND_URL = "https://huggingface.co/spaces/rahmanmehraj627/visiodect-api";
+// Runtime subdomain that actually serves the app -- NOT the huggingface.co
+// "/spaces/..." page URL (that's the human-browsable page, not a valid
+// Client.connect target).
+const DEFAULT_BACKEND_URL = "https://rahmanmehraj627-visiodect-api.hf.space";
 
 function getSpaceUrl(): string {
   const configured = process.env.NEXT_PUBLIC_API_URL?.trim();
   return configured && configured.length > 0 ? configured : DEFAULT_BACKEND_URL;
+}
+
+// Anonymous/unauthenticated requests to a ZeroGPU Space share a tiny public
+// quota pool that's essentially always exhausted -- that's the
+// "ZeroGPU quota exceeded (0s left)" error. Authenticating with ANY valid HF
+// token (read-only is enough, doesn't need write access) gets you a real
+// per-user quota instead. Set NEXT_PUBLIC_HF_TOKEN in .env.local and in
+// Vercel's project env vars.
+//
+// SECURITY NOTE: NEXT_PUBLIC_ vars are bundled into the client-side JS and
+// visible to anyone who opens devtools/view-source on your deployed site --
+// this token WILL be exposed. Use a token scoped to read-only access so the
+// worst case is someone borrowing your ZeroGPU quota, not anything more
+// sensitive. For a class project this is a reasonable tradeoff; a fully
+// secure setup would proxy these calls through a Next.js API route that
+// holds the token server-side instead.
+// Extract the exact options type Client.connect actually expects, so we can
+// cast through it instead of `any` -- the installed @gradio/client version's
+// TS types don't declare hf_token even though the JS runtime accepts it.
+type GradioClientOptions = Parameters<typeof Client.connect>[1];
+
+function getClientOptions(): GradioClientOptions | undefined {
+  const token = process.env.NEXT_PUBLIC_HF_TOKEN?.trim();
+  // TEMPORARY DEBUG -- remove once confirmed working. Logs whether a token
+  // was found and its length (not the value itself) so you can confirm
+  // it's actually reaching this code without exposing it in a screenshot.
+  console.log("[live-api] HF token present:", !!token, token ? `(length ${token.length})` : "");
+  if (!token) return undefined;
+  return { hf_token: token } as unknown as GradioClientOptions;
 }
 
 export interface FrameResult {
@@ -110,7 +51,7 @@ export interface FrameResult {
 // `npm install @gradio/client` if it's not already in package.json.
 
 export async function inferImage(modelName: ModelName, imageBlob: Blob): Promise<Detection[]> {
-  const client = await Client.connect(getSpaceUrl());
+  const client = await Client.connect(getSpaceUrl(), getClientOptions());
   const result = await client.predict("/infer_image", [imageBlob, modelName]);
   const data = result.data as unknown[];
   return (data[0] as Detection[]) ?? [];
@@ -132,7 +73,7 @@ export function streamVideoJob(
 
   (async () => {
     try {
-      const client = await Client.connect(getSpaceUrl());
+      const client = await Client.connect(getSpaceUrl(), getClientOptions());
       const submission = client.submit("/infer_video", [videoFile, modelName]);
 
       for await (const event of submission) {
@@ -161,7 +102,7 @@ export function streamVideoJob(
 }
 
 export async function checkHealth() {
-  const client = await Client.connect(getSpaceUrl());
+  const client = await Client.connect(getSpaceUrl(), getClientOptions());
   const result = await client.predict("/health", []);
   const data = result.data as unknown[];
   return data[0] as { status: string; models_loaded: string[] };
