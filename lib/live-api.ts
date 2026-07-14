@@ -4,8 +4,8 @@ import { Detection, ModelName } from "./types";
 // Runtime subdomain that actually serves the app -- NOT the huggingface.co
 // "/spaces/..." page URL (that's the human-browsable page, not a valid
 // Client.connect target).
-const DEFAULT_BACKEND_URL = "https://rahmanmehraj627-visiodect-api.hf.space";
-
+// Use the Hugging Face namespace, NOT the direct .hf.space URL.
+const DEFAULT_BACKEND_URL = "rahmanmehraj627/visiodect-api";
 function getSpaceUrl(): string {
   const configured = process.env.NEXT_PUBLIC_API_URL?.trim();
   return configured && configured.length > 0 ? configured : DEFAULT_BACKEND_URL;
