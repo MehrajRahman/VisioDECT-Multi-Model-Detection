@@ -66,9 +66,15 @@ import { usePathname } from "next/navigation";
 
 const LINKS = [
   { href: "/", label: "Console" },
-  { href: "#analytics", label: "Performance Metrics" },
-  { href: "#kaggle", label: "Pipelines" },
-  { href: "/live", label: "Live Deployment" },
+  // Root-relative so they still work from /ssl, /methodology etc -- a bare
+  // "#analytics" only resolves on the homepage, which used to be the only page.
+  { href: "/#analytics", label: "Metrics" },
+  { href: "/#kaggle", label: "Pipelines" },
+  // One entry for Part B rather than four: /part-b is the hub and links on to
+  // /ssl, /label-efficiency, /tracking and /methodology with live status on
+  // each. Listing all five here crowded the bar past what fits at md.
+  { href: "/part-b", label: "Part B" },
+  { href: "/live", label: "Live" },
 ];
 
 export default function Nav() {

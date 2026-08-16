@@ -1,0 +1,222 @@
+{
+  "cells": [
+    {
+      "cell": "ab1",
+      "method": "dinov3",
+      "route": "distillation into CNN (frozen dinov3/vitb16 teacher, released LVD-1689M weights -> domain-adaptive on the VisioDECT pool)",
+      "student": "ultralytics/yolo26s.yaml",
+      "config": {
+        "lr": 0.0005,
+        "weight_decay": 1e-05,
+        "ema": 0.99,
+        "epochs": 30,
+        "image_size": 224,
+        "batch_size": 32,
+        "precision": "16-mixed",
+        "seed": 445
+      },
+      "pretrain_minutes": 61.3,
+      "best_loss": null,
+      "ssl_pool_images": 16483.0,
+      "source_file": "ablation/ab1/dinov3_pretrain_summary.json",
+      "downstream": {
+        "rho": 0.2,
+        "epochs": 30.0,
+        "train_minutes": 50.1,
+        "best_epoch": 30.0,
+        "val_precision": 0.9246,
+        "val_recall": 0.919,
+        "val_mAP50": 0.9681,
+        "val_mAP50_95": 0.5945,
+        "test_precision": 0.9157,
+        "test_recall": 0.9139,
+        "test_mAP50": 0.9627,
+        "test_mAP50_95": 0.593
+      }
+    },
+    {
+      "cell": "ab2",
+      "method": "dinov3",
+      "route": "distillation into CNN (frozen dinov3/vitb16 teacher, released LVD-1689M weights -> domain-adaptive on the VisioDECT pool)",
+      "student": "ultralytics/yolo26s.yaml",
+      "config": {
+        "lr": 0.002,
+        "weight_decay": 0.001,
+        "ema": 0.999,
+        "epochs": 30,
+        "image_size": 224,
+        "batch_size": 32,
+        "precision": "16-mixed",
+        "seed": 445
+      },
+      "pretrain_minutes": 59.0,
+      "best_loss": null,
+      "ssl_pool_images": 16483.0,
+      "source_file": "ablation/ab2/dinov3_pretrain_summary.json",
+      "downstream": {
+        "rho": 0.2,
+        "epochs": 30.0,
+        "train_minutes": 47.5,
+        "best_epoch": 27.0,
+        "val_precision": 0.9216,
+        "val_recall": 0.9355,
+        "val_mAP50": 0.9736,
+        "val_mAP50_95": 0.594,
+        "test_precision": 0.9131,
+        "test_recall": 0.9217,
+        "test_mAP50": 0.9651,
+        "test_mAP50_95": 0.5955
+      }
+    },
+    {
+      "cell": "ab3",
+      "method": "dinov3",
+      "route": "distillation into CNN (frozen dinov3/vitb16 teacher, released LVD-1689M weights -> domain-adaptive on the VisioDECT pool)",
+      "student": "ultralytics/yolo26s.yaml",
+      "config": {
+        "lr": 0.001,
+        "weight_decay": 0.0001,
+        "ema": 0.995,
+        "epochs": 30,
+        "image_size": 224,
+        "batch_size": 32,
+        "precision": "16-mixed",
+        "seed": 445
+      },
+      "pretrain_minutes": 63.2,
+      "best_loss": null,
+      "ssl_pool_images": 16483.0,
+      "source_file": "ablation/ab3/dinov3_pretrain_summary.json",
+      "downstream": {
+        "rho": 0.2,
+        "epochs": 30.0,
+        "train_minutes": 51.9,
+        "best_epoch": 30.0,
+        "val_precision": 0.9173,
+        "val_recall": 0.9289,
+        "val_mAP50": 0.9682,
+        "val_mAP50_95": 0.5958,
+        "test_precision": 0.9151,
+        "test_recall": 0.927,
+        "test_mAP50": 0.9661,
+        "test_mAP50_95": 0.5965
+      }
+    },
+    {
+      "cell": "ab4",
+      "method": "dinov3",
+      "route": "distillation into CNN (frozen dinov3/vitb16 teacher, released LVD-1689M weights -> domain-adaptive on the VisioDECT pool)",
+      "student": "ultralytics/yolo26s.yaml",
+      "config": {
+        "lr": 0.00075,
+        "weight_decay": 5e-05,
+        "ema": 0.997,
+        "epochs": 30,
+        "image_size": 224,
+        "batch_size": 32,
+        "precision": "16-mixed",
+        "seed": 445
+      },
+      "pretrain_minutes": 58.4,
+      "best_loss": null,
+      "ssl_pool_images": 16483.0,
+      "source_file": "ablation/ab4/dinov3_pretrain_summary.json",
+      "downstream": {
+        "rho": 0.2,
+        "epochs": 30.0,
+        "train_minutes": 49.7,
+        "best_epoch": 29.0,
+        "val_precision": 0.9298,
+        "val_recall": 0.9245,
+        "val_mAP50": 0.9714,
+        "val_mAP50_95": 0.5944,
+        "test_precision": 0.9184,
+        "test_recall": 0.9204,
+        "test_mAP50": 0.9615,
+        "test_mAP50_95": 0.5948
+      }
+    },
+    {
+      "cell": "ab5",
+      "method": "dinov3",
+      "route": "distillation into CNN (frozen dinov3/vitb16 teacher, released LVD-1689M weights -> domain-adaptive on the VisioDECT pool)",
+      "student": "ultralytics/yolo26s.yaml",
+      "config": {
+        "lr": 0.0012,
+        "weight_decay": 0.0002,
+        "ema": 0.996,
+        "epochs": 30,
+        "image_size": 224,
+        "batch_size": 32,
+        "precision": "16-mixed",
+        "seed": 445
+      },
+      "pretrain_minutes": 60.3,
+      "best_loss": null,
+      "ssl_pool_images": 16483.0,
+      "source_file": "ablation/ab5/dinov3_pretrain_summary.json",
+      "downstream": {
+        "rho": 0.2,
+        "epochs": 30.0,
+        "train_minutes": 48.1,
+        "best_epoch": 30.0,
+        "val_precision": 0.9275,
+        "val_recall": 0.9296,
+        "val_mAP50": 0.9672,
+        "val_mAP50_95": 0.5971,
+        "test_precision": 0.9267,
+        "test_recall": 0.921,
+        "test_mAP50": 0.9698,
+        "test_mAP50_95": 0.6018
+      }
+    },
+    {
+      "cell": "ab6",
+      "method": "dinov3",
+      "route": "distillation into CNN (frozen dinov3/vitb16 teacher, released LVD-1689M weights -> domain-adaptive on the VisioDECT pool)",
+      "student": "ultralytics/yolo26s.yaml",
+      "config": {
+        "lr": 0.0006,
+        "weight_decay": 0.0003,
+        "ema": 0.998,
+        "epochs": 30,
+        "image_size": 224,
+        "batch_size": 32,
+        "precision": "16-mixed",
+        "seed": 445
+      },
+      "pretrain_minutes": 62.5,
+      "best_loss": null,
+      "ssl_pool_images": 16483.0,
+      "source_file": "ablation/ab6/dinov3_pretrain_summary.json",
+      "downstream": {
+        "rho": 0.2,
+        "epochs": 30.0,
+        "train_minutes": 49.4,
+        "best_epoch": 30.0,
+        "val_precision": 0.9325,
+        "val_recall": 0.9182,
+        "val_mAP50": 0.9702,
+        "val_mAP50_95": 0.5939,
+        "test_precision": 0.9274,
+        "test_recall": 0.9208,
+        "test_mAP50": 0.9669,
+        "test_mAP50_95": 0.5934
+      }
+    }
+  ],
+  "varied_keys": [
+    "ema",
+    "lr",
+    "weight_decay"
+  ],
+  "held_config": {
+    "batch_size": 32,
+    "epochs": 30,
+    "image_size": 224,
+    "precision": "16-mixed",
+    "seed": 445
+  },
+  "spread_pp": 0.880000000000003,
+  "note": "This sweep varies the self-supervised pretraining recipe at a fixed \u03c1 = 0.20. It uses a shorter 30-epoch downstream budget than the headline comparison's 50, so its absolute mAP values are not comparable with the main results \u2014 only with each other."
+}

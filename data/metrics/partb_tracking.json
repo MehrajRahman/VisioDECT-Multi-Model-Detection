@@ -1,0 +1,299 @@
+{
+  "detector": "dinov3_yolo26s_rho20",
+  "video": "evening_multi_drone_mot_11s.mp4",
+  "video_props": "1920x1080@24fps/264frames",
+  "expected_objects": 6.0,
+  "track_conf": 0.08,
+  "imgsz": 1280.0,
+  "detection_only_video": "detection_framewise_h264.mp4",
+  "runs": [
+    {
+      "tracker": "ByteTrack",
+      "video": "tracked_bytetrack_h264.mp4",
+      "metrics": [
+        {
+          "key": "unique_track_ids",
+          "label": "Unique track IDs",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Compare against the expected object count -- more IDs than objects means identity switches or re-births.",
+          "value": 7.0
+        },
+        {
+          "key": "excess_ids (proxy for switches+re-births)",
+          "label": "Excess IDs",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Proxy for switches + re-births.",
+          "value": 1.0
+        },
+        {
+          "key": "id_births_after_frame0 (verify by eye)",
+          "label": "ID births after frame 0",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Verify by eye -- a drone genuinely entering the frame also counts here.",
+          "value": 5.0
+        },
+        {
+          "key": "mean_track_length_s",
+          "label": "Mean track length",
+          "unit": "s",
+          "lower_is_better": false,
+          "note": null,
+          "value": 7.58
+        },
+        {
+          "key": "median_track_length_s",
+          "label": "Median track length",
+          "unit": "s",
+          "lower_is_better": false,
+          "note": null,
+          "value": 8.38
+        },
+        {
+          "key": "fragments (<0.5s)",
+          "label": "Fragments",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Tracks shorter than 0.5 s.",
+          "value": 0.0
+        },
+        {
+          "key": "mean_track_continuity (obs/span)",
+          "label": "Track continuity",
+          "unit": "",
+          "lower_is_better": false,
+          "note": "Observations divided by track span -- 1.0 means never dropped.",
+          "value": 0.944
+        },
+        {
+          "key": "gap_events (in-track dropouts)",
+          "label": "Gap events",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "In-track dropouts.",
+          "value": 21.0
+        },
+        {
+          "key": "mean_detection_conf",
+          "label": "Mean detection conf",
+          "unit": "",
+          "lower_is_better": false,
+          "note": null,
+          "value": 0.614
+        },
+        {
+          "key": "mean_active_per_frame",
+          "label": "Mean active per frame",
+          "unit": "",
+          "lower_is_better": false,
+          "note": null,
+          "value": 4.57
+        },
+        {
+          "key": "fps_inference",
+          "label": "Inference FPS",
+          "unit": "fps",
+          "lower_is_better": false,
+          "note": null,
+          "value": 37.9
+        }
+      ]
+    },
+    {
+      "tracker": "BoT-SORT (GMC)",
+      "video": "tracked_botsort_h264.mp4",
+      "metrics": [
+        {
+          "key": "unique_track_ids",
+          "label": "Unique track IDs",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Compare against the expected object count -- more IDs than objects means identity switches or re-births.",
+          "value": 7.0
+        },
+        {
+          "key": "excess_ids (proxy for switches+re-births)",
+          "label": "Excess IDs",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Proxy for switches + re-births.",
+          "value": 1.0
+        },
+        {
+          "key": "id_births_after_frame0 (verify by eye)",
+          "label": "ID births after frame 0",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Verify by eye -- a drone genuinely entering the frame also counts here.",
+          "value": 5.0
+        },
+        {
+          "key": "mean_track_length_s",
+          "label": "Mean track length",
+          "unit": "s",
+          "lower_is_better": false,
+          "note": null,
+          "value": 7.6
+        },
+        {
+          "key": "median_track_length_s",
+          "label": "Median track length",
+          "unit": "s",
+          "lower_is_better": false,
+          "note": null,
+          "value": 8.46
+        },
+        {
+          "key": "fragments (<0.5s)",
+          "label": "Fragments",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Tracks shorter than 0.5 s.",
+          "value": 0.0
+        },
+        {
+          "key": "mean_track_continuity (obs/span)",
+          "label": "Track continuity",
+          "unit": "",
+          "lower_is_better": false,
+          "note": "Observations divided by track span -- 1.0 means never dropped.",
+          "value": 0.945
+        },
+        {
+          "key": "gap_events (in-track dropouts)",
+          "label": "Gap events",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "In-track dropouts.",
+          "value": 22.0
+        },
+        {
+          "key": "mean_detection_conf",
+          "label": "Mean detection conf",
+          "unit": "",
+          "lower_is_better": false,
+          "note": null,
+          "value": 0.612
+        },
+        {
+          "key": "mean_active_per_frame",
+          "label": "Mean active per frame",
+          "unit": "",
+          "lower_is_better": false,
+          "note": null,
+          "value": 4.59
+        },
+        {
+          "key": "fps_inference",
+          "label": "Inference FPS",
+          "unit": "fps",
+          "lower_is_better": false,
+          "note": null,
+          "value": 16.4
+        }
+      ]
+    },
+    {
+      "tracker": "BoT-SORT (GMC+ReID)",
+      "video": "tracked_botsort_reid_h264.mp4",
+      "metrics": [
+        {
+          "key": "unique_track_ids",
+          "label": "Unique track IDs",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Compare against the expected object count -- more IDs than objects means identity switches or re-births.",
+          "value": 13.0
+        },
+        {
+          "key": "excess_ids (proxy for switches+re-births)",
+          "label": "Excess IDs",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Proxy for switches + re-births.",
+          "value": 7.0
+        },
+        {
+          "key": "id_births_after_frame0 (verify by eye)",
+          "label": "ID births after frame 0",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Verify by eye -- a drone genuinely entering the frame also counts here.",
+          "value": 11.0
+        },
+        {
+          "key": "mean_track_length_s",
+          "label": "Mean track length",
+          "unit": "s",
+          "lower_is_better": false,
+          "note": null,
+          "value": 4.2
+        },
+        {
+          "key": "median_track_length_s",
+          "label": "Median track length",
+          "unit": "s",
+          "lower_is_better": false,
+          "note": null,
+          "value": 3.17
+        },
+        {
+          "key": "fragments (<0.5s)",
+          "label": "Fragments",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "Tracks shorter than 0.5 s.",
+          "value": 5.0
+        },
+        {
+          "key": "mean_track_continuity (obs/span)",
+          "label": "Track continuity",
+          "unit": "",
+          "lower_is_better": false,
+          "note": "Observations divided by track span -- 1.0 means never dropped.",
+          "value": 0.914
+        },
+        {
+          "key": "gap_events (in-track dropouts)",
+          "label": "Gap events",
+          "unit": "",
+          "lower_is_better": true,
+          "note": "In-track dropouts.",
+          "value": 25.0
+        },
+        {
+          "key": "mean_detection_conf",
+          "label": "Mean detection conf",
+          "unit": "",
+          "lower_is_better": false,
+          "note": null,
+          "value": 0.6
+        },
+        {
+          "key": "mean_active_per_frame",
+          "label": "Mean active per frame",
+          "unit": "",
+          "lower_is_better": false,
+          "note": null,
+          "value": 4.7
+        },
+        {
+          "key": "fps_inference",
+          "label": "Inference FPS",
+          "unit": "fps",
+          "lower_is_better": false,
+          "note": null,
+          "value": 9.4
+        }
+      ]
+    }
+  ],
+  "figures": [
+    "comparison_active_tracks.png",
+    "detection_framewise_stats.png"
+  ],
+  "source_file": "tracking/tracking/tracking_summary.json",
+  "has_track_frames": true
+}

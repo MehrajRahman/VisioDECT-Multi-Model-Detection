@@ -122,6 +122,33 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 1b. Gateway into Part B. Everything above and below this banner is the
+          Part A supervised study; Part B lives behind /part-b, which is the hub
+          linking on to every page of that extension. */}
+      <Link
+        href="/part-b"
+        className="group block rounded-3xl border border-blue-500/25 bg-gradient-to-r from-blue-600/15 via-indigo-600/10 to-transparent p-6 md:p-8 transition-colors hover:border-blue-400/50"
+      >
+        <div className="flex flex-wrap items-center justify-between gap-6">
+          <div className="min-w-0 space-y-2">
+            <p className="text-xs font-bold uppercase tracking-widest text-blue-400">
+              Part B · Extension Study
+            </p>
+            <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">
+              Self-supervised pretraining for label-efficient detection
+            </h2>
+            <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
+              Everything on this page is the fully supervised Part A study. Part B asks how much of
+              the annotation budget self-supervision can save — four SSL methods, a label-efficiency
+              sweep, a pretraining ablation, multi-object tracking, and a protocol audit.
+            </p>
+          </div>
+          <span className="flex shrink-0 items-center gap-2 rounded-xl border border-blue-500/40 bg-blue-500/15 px-6 py-3 text-sm font-bold uppercase tracking-wider text-blue-300 transition-transform group-hover:translate-x-1">
+            Enter Part B →
+          </span>
+        </div>
+      </Link>
+
       {/* 2. Enterprise Quick Actions Bar (Color Contrast Fixed) */}
       <section className="glass-card rounded-2xl p-4 flex flex-wrap gap-4 items-center justify-between border-l-4 border-l-blue-500">
         <div className="flex items-center gap-3 px-2">

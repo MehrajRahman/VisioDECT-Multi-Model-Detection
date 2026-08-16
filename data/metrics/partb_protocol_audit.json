@@ -1,0 +1,490 @@
+{
+  "runs": [
+    {
+      "name": "coco_rho50",
+      "init": "coco",
+      "rho": 0.5
+    },
+    {
+      "name": "coco_rho10",
+      "init": "coco",
+      "rho": 0.1
+    },
+    {
+      "name": "dinov3_rho10",
+      "init": "dinov3",
+      "rho": 0.1
+    },
+    {
+      "name": "dinov3_rho30",
+      "init": "dinov3",
+      "rho": 0.3
+    },
+    {
+      "name": "dinov3_rho40",
+      "init": "dinov3",
+      "rho": 0.4
+    },
+    {
+      "name": "dinov3_rho50",
+      "init": "dinov3",
+      "rho": 0.5
+    },
+    {
+      "name": "coco_rho30",
+      "init": "coco",
+      "rho": 0.3
+    },
+    {
+      "name": "coco_rho40",
+      "init": "coco",
+      "rho": 0.4
+    },
+    {
+      "name": "coco_rho50",
+      "init": "coco",
+      "rho": 0.5
+    },
+    {
+      "name": "dinov3_rho10",
+      "init": "dinov3",
+      "rho": 0.1
+    },
+    {
+      "name": "dinov3_rho30",
+      "init": "dinov3",
+      "rho": 0.3
+    },
+    {
+      "name": "dinov3_rho40",
+      "init": "dinov3",
+      "rho": 0.4
+    },
+    {
+      "name": "dinov3_rho50",
+      "init": "dinov3",
+      "rho": 0.5
+    },
+    {
+      "name": "byol_rho20",
+      "init": "byol",
+      "rho": 0.2
+    },
+    {
+      "name": "dinov3_rho20",
+      "init": "dinov3",
+      "rho": 0.2
+    },
+    {
+      "name": "coco_rho20",
+      "init": "coco",
+      "rho": 0.2
+    },
+    {
+      "name": "ijepa_rho20",
+      "init": "ijepa",
+      "rho": 0.2
+    },
+    {
+      "name": "random_rho20",
+      "init": "random",
+      "rho": 0.2
+    },
+    {
+      "name": "simclr_rho20",
+      "init": "simclr",
+      "rho": 0.2
+    }
+  ],
+  "total_keys": 116,
+  "constant_count": 110,
+  "varying": [
+    {
+      "key": "data",
+      "values": {
+        "coco_rho50": "/kaggle/working/bonus_data/data_rho50.yaml",
+        "coco_rho10": "/kaggle/working/bonus_data/data_rho10.yaml",
+        "dinov3_rho10": "/kaggle/working/partB_data_r010/data.yaml",
+        "dinov3_rho30": "/kaggle/working/partB_data_r030/data.yaml",
+        "dinov3_rho40": "/kaggle/working/partB_data_r040/data.yaml",
+        "dinov3_rho50": "/kaggle/working/partB_data_r050/data.yaml",
+        "coco_rho30": "/kaggle/working/bonus_data/data_rho30.yaml",
+        "coco_rho40": "/kaggle/working/bonus_data/data_rho40.yaml",
+        "byol_rho20": "/kaggle/working/partB_data/data.yaml",
+        "dinov3_rho20": "/kaggle/working/partB_data/data.yaml",
+        "coco_rho20": "/kaggle/working/partB_data/data.yaml",
+        "ijepa_rho20": "/kaggle/working/partB_data/data.yaml",
+        "random_rho20": "/kaggle/working/partB_data/data.yaml",
+        "simclr_rho20": "/kaggle/working/partB_data/data.yaml"
+      },
+      "expected": true,
+      "category": "permitted",
+      "reason": "label-fraction subset \u2014 the other permitted variable, \u03c1"
+    },
+    {
+      "key": "model",
+      "values": {
+        "coco_rho50": "yolo26s.pt",
+        "coco_rho10": "yolo26s.pt",
+        "dinov3_rho10": "/kaggle/working/dinov3_surgery_init.pt",
+        "dinov3_rho30": "/kaggle/working/dinov3_surgery_init.pt",
+        "dinov3_rho40": "/kaggle/working/dinov3_surgery_init.pt",
+        "dinov3_rho50": "/kaggle/working/dinov3_surgery_init.pt",
+        "coco_rho30": "yolo26s.pt",
+        "coco_rho40": "yolo26s.pt",
+        "byol_rho20": "/kaggle/working/byol_surgery_init.pt",
+        "dinov3_rho20": "/kaggle/working/dinov3_surgery_init.pt",
+        "coco_rho20": "yolo26s.pt",
+        "ijepa_rho20": "/kaggle/working/ijepa_surgery_init.pt",
+        "random_rho20": "yolo26s.yaml",
+        "simclr_rho20": "/kaggle/working/simclr_surgery_init.pt"
+      },
+      "expected": true,
+      "category": "permitted",
+      "reason": "backbone initialisation \u2014 one of the two variables the study is allowed to change"
+    },
+    {
+      "key": "name",
+      "values": {
+        "coco_rho50": "coco_rho50",
+        "coco_rho10": "coco_rho10",
+        "dinov3_rho10": "dinov3_rho10",
+        "dinov3_rho30": "dinov3_rho30",
+        "dinov3_rho40": "dinov3_rho40",
+        "dinov3_rho50": "dinov3_rho50",
+        "coco_rho30": "coco_rho30",
+        "coco_rho40": "coco_rho40",
+        "byol_rho20": "byol_rho20",
+        "dinov3_rho20": "dinov3_rho20",
+        "coco_rho20": "coco_rho20",
+        "ijepa_rho20": "ijepa_rho20",
+        "random_rho20": "random_rho20",
+        "simclr_rho20": "simclr_rho20"
+      },
+      "expected": true,
+      "category": "permitted",
+      "reason": "run label, derived from the initialisation and \u03c1"
+    },
+    {
+      "key": "plots",
+      "values": {
+        "coco_rho50": "False",
+        "coco_rho10": "False",
+        "dinov3_rho10": "True",
+        "dinov3_rho30": "True",
+        "dinov3_rho40": "True",
+        "dinov3_rho50": "True",
+        "coco_rho30": "False",
+        "coco_rho40": "False",
+        "byol_rho20": "True",
+        "dinov3_rho20": "True",
+        "coco_rho20": "True",
+        "ijepa_rho20": "True",
+        "random_rho20": "True",
+        "simclr_rho20": "True"
+      },
+      "expected": true,
+      "category": "benign",
+      "reason": "controls whether Ultralytics renders result plots \u2014 output only, no effect on training"
+    },
+    {
+      "key": "project",
+      "values": {
+        "coco_rho50": "/kaggle/working/runs_bonus",
+        "coco_rho10": "/kaggle/working/runs_bonus",
+        "dinov3_rho10": "/kaggle/working/runs_bonus",
+        "dinov3_rho30": "/kaggle/working/runs_bonus",
+        "dinov3_rho40": "/kaggle/working/runs_bonus",
+        "dinov3_rho50": "/kaggle/working/runs_bonus",
+        "coco_rho30": "/kaggle/working/runs_bonus",
+        "coco_rho40": "/kaggle/working/runs_bonus",
+        "byol_rho20": "/kaggle/working/runs_partB",
+        "dinov3_rho20": "/kaggle/working/runs_partB",
+        "coco_rho20": "/kaggle/working/runs_partB",
+        "ijepa_rho20": "/kaggle/working/runs_partB",
+        "random_rho20": "/kaggle/working/runs_partB",
+        "simclr_rho20": "/kaggle/working/runs_partB"
+      },
+      "expected": true,
+      "category": "permitted",
+      "reason": "output directory"
+    },
+    {
+      "key": "save_dir",
+      "values": {
+        "coco_rho50": "/kaggle/working/runs_bonus/coco_rho50",
+        "coco_rho10": "/kaggle/working/runs_bonus/coco_rho10",
+        "dinov3_rho10": "/kaggle/working/runs_bonus/dinov3_rho10",
+        "dinov3_rho30": "/kaggle/working/runs_bonus/dinov3_rho30",
+        "dinov3_rho40": "/kaggle/working/runs_bonus/dinov3_rho40",
+        "dinov3_rho50": "/kaggle/working/runs_bonus/dinov3_rho50",
+        "coco_rho30": "/kaggle/working/runs_bonus/coco_rho30",
+        "coco_rho40": "/kaggle/working/runs_bonus/coco_rho40",
+        "byol_rho20": "/kaggle/working/runs_partB/byol_rho20",
+        "dinov3_rho20": "/kaggle/working/runs_partB/dinov3_rho20",
+        "coco_rho20": "/kaggle/working/runs_partB/coco_rho20",
+        "ijepa_rho20": "/kaggle/working/runs_partB/ijepa_rho20",
+        "random_rho20": "/kaggle/working/runs_partB/random_rho20",
+        "simclr_rho20": "/kaggle/working/runs_partB/simclr_rho20"
+      },
+      "expected": true,
+      "category": "permitted",
+      "reason": "output directory"
+    }
+  ],
+  "permitted_count": 5,
+  "benign_count": 1,
+  "groups": [
+    {
+      "label": "Input resolution",
+      "keys": [
+        {
+          "key": "imgsz",
+          "value": "640",
+          "held": true
+        },
+        {
+          "key": "rect",
+          "value": "False",
+          "held": true
+        }
+      ],
+      "held": true,
+      "drifted": []
+    },
+    {
+      "label": "Batch size",
+      "keys": [
+        {
+          "key": "batch",
+          "value": "16",
+          "held": true
+        },
+        {
+          "key": "nbs",
+          "value": "64",
+          "held": true
+        }
+      ],
+      "held": true,
+      "drifted": []
+    },
+    {
+      "label": "Epoch budget",
+      "keys": [
+        {
+          "key": "epochs",
+          "value": "50",
+          "held": true
+        },
+        {
+          "key": "patience",
+          "value": "25",
+          "held": true
+        },
+        {
+          "key": "close_mosaic",
+          "value": "10",
+          "held": true
+        }
+      ],
+      "held": true,
+      "drifted": []
+    },
+    {
+      "label": "Optimiser and LR schedule",
+      "keys": [
+        {
+          "key": "optimizer",
+          "value": "auto",
+          "held": true
+        },
+        {
+          "key": "lr0",
+          "value": "0.01",
+          "held": true
+        },
+        {
+          "key": "lrf",
+          "value": "0.01",
+          "held": true
+        },
+        {
+          "key": "momentum",
+          "value": "0.937",
+          "held": true
+        },
+        {
+          "key": "weight_decay",
+          "value": "0.0005",
+          "held": true
+        },
+        {
+          "key": "cos_lr",
+          "value": "False",
+          "held": true
+        },
+        {
+          "key": "warmup_epochs",
+          "value": "3",
+          "held": true
+        },
+        {
+          "key": "warmup_momentum",
+          "value": "0.8",
+          "held": true
+        },
+        {
+          "key": "warmup_bias_lr",
+          "value": "0.1",
+          "held": true
+        }
+      ],
+      "held": true,
+      "drifted": []
+    },
+    {
+      "label": "Augmentation policy",
+      "keys": [
+        {
+          "key": "hsv_h",
+          "value": "0.015",
+          "held": true
+        },
+        {
+          "key": "hsv_s",
+          "value": "0.7",
+          "held": true
+        },
+        {
+          "key": "hsv_v",
+          "value": "0.4",
+          "held": true
+        },
+        {
+          "key": "degrees",
+          "value": "0.0",
+          "held": true
+        },
+        {
+          "key": "translate",
+          "value": "0.1",
+          "held": true
+        },
+        {
+          "key": "scale",
+          "value": "0.5",
+          "held": true
+        },
+        {
+          "key": "shear",
+          "value": "0.0",
+          "held": true
+        },
+        {
+          "key": "perspective",
+          "value": "0.0",
+          "held": true
+        },
+        {
+          "key": "flipud",
+          "value": "0.0",
+          "held": true
+        },
+        {
+          "key": "fliplr",
+          "value": "0.5",
+          "held": true
+        },
+        {
+          "key": "bgr",
+          "value": "0.0",
+          "held": true
+        },
+        {
+          "key": "mosaic",
+          "value": "1.0",
+          "held": true
+        },
+        {
+          "key": "mixup",
+          "value": "0.0",
+          "held": true
+        },
+        {
+          "key": "copy_paste",
+          "value": "0.0",
+          "held": true
+        },
+        {
+          "key": "erasing",
+          "value": "0.4",
+          "held": true
+        },
+        {
+          "key": "auto_augment",
+          "value": "randaugment",
+          "held": true
+        },
+        {
+          "key": "augment",
+          "value": "False",
+          "held": true
+        }
+      ],
+      "held": true,
+      "drifted": []
+    },
+    {
+      "label": "Confidence / NMS thresholds",
+      "keys": [
+        {
+          "key": "conf",
+          "value": "None",
+          "held": true
+        },
+        {
+          "key": "iou",
+          "value": "0.7",
+          "held": true
+        },
+        {
+          "key": "max_det",
+          "value": "300",
+          "held": true
+        },
+        {
+          "key": "single_cls",
+          "value": "False",
+          "held": true
+        },
+        {
+          "key": "agnostic_nms",
+          "value": "False",
+          "held": true
+        }
+      ],
+      "held": true,
+      "drifted": []
+    },
+    {
+      "label": "Random seed",
+      "keys": [
+        {
+          "key": "seed",
+          "value": "445",
+          "held": true
+        },
+        {
+          "key": "deterministic",
+          "value": "True",
+          "held": true
+        }
+      ],
+      "held": true,
+      "drifted": []
+    }
+  ],
+  "unexpected_drift": [],
+  "compliant": true
+}

@@ -1,0 +1,20 @@
+{
+  "partition": {
+    "fingerprint": "75e9c05d747bd9ec",
+    "fingerprint_consistent": true,
+    "seed": 445.0,
+    "val_images": 2060.0,
+    "test_images": 2060.0
+  },
+  "methods": [],
+  "protocol": {
+    "close_mosaic": 10,
+    "patience": 25,
+    "imgsz": 640,
+    "fliplr": 0.5,
+    "optimizer": "auto",
+    "epochs": 50,
+    "lr0": 0.01,
+    "batch": 16
+  }
+}

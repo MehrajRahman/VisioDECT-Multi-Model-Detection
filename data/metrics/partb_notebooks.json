@@ -1,0 +1,56 @@
+{
+  "declared": [
+    {
+      "notebook": "partB-01b-simclr-detect",
+      "artefacts": 1
+    },
+    {
+      "notebook": "partB-02b-byol-detect",
+      "artefacts": 1
+    },
+    {
+      "notebook": "partB-03b-ijepa-detect",
+      "artefacts": 1
+    },
+    {
+      "notebook": "partB-04b-dinov3-detect",
+      "artefacts": 7
+    },
+    {
+      "notebook": "partB-05-tracking",
+      "artefacts": 1
+    },
+    {
+      "notebook": "partB-bonus-coco_rho50",
+      "artefacts": 1
+    },
+    {
+      "notebook": "partB-bonus-dinov3_rho10",
+      "artefacts": 1
+    },
+    {
+      "notebook": "partB-bonus-dinov3_rho30",
+      "artefacts": 1
+    },
+    {
+      "notebook": "partB-bonus-dinov3_rho40",
+      "artefacts": 1
+    },
+    {
+      "notebook": "partB-bonus-dinov3_rho50",
+      "artefacts": 1
+    }
+  ],
+  "resolved": [
+    {
+      "slug": "partb-notebook4a-dinov3-self-supervisedpretraining",
+      "owner": "ahnafahmed11",
+      "url": "https://www.kaggle.com/code/ahnafahmed11/partb-notebook4a-dinov3-self-supervisedpretraining"
+    },
+    {
+      "slug": "partb-notebook4b-dinov3-self-superviseddownstream",
+      "owner": "ahnafahmed11",
+      "url": "https://www.kaggle.com/code/ahnafahmed11/partb-notebook4b-dinov3-self-superviseddownstream"
+    }
+  ]
+}

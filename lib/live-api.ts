@@ -107,3 +107,69 @@ export async function checkHealth() {
   const data = result.data as unknown[];
   return data[0] as { status: string; models_loaded: string[] };
 }
+// ---------------------------------------------------------------------------
+// Multi-object tracking. Returns track ROWS, not an annotated video -- the
+// Space deliberately skips server-side encoding (see infer_video_track in
+// backend/visiodect-api/app.py) because encoding cost more GPU time than the
+// inference did. The caller draws the boxes over the source clip locally.
+// ---------------------------------------------------------------------------
+
+/** [frame, track_id, class_id, confidence, cx, cy, w, h] */
+export type TrackRow = [number, number, number, number, number, number, number, number];
+
+export interface TrackResult {
+  width: number;
+  height: number;
+  fps: number;
+  frames: number;
+  classes: string[];
+  tracker: string;
+  model: string;
+  imgsz: number;
+  conf: number;
+  unique_ids: number;
+  inference_seconds: number;
+  rows: TrackRow[];
+  /** True when the Space served a previously computed result for this file. */
+  cached: boolean;
+}
+
+// The Space serves one more checkpoint than the Part A comparison does:
+// "dinov3_rho20" is the same YOLOv26-s architecture fine-tuned on 20% of the
+// labels from a self-supervised backbone. It is kept OUT of ModelName so the
+// Part A pages -- which index per-model metrics, labels and hardware specs by
+// that type -- stay exhaustive and type-safe.
+export type InferenceModelName = ModelName | "dinov3_rho20";
+
+export interface TrackOptions {
+  model?: InferenceModelName;
+  tracker?: "bytetrack" | "botsort";
+  /** Lower costs less GPU. 960 keeps the notebook's ID count on our clip. */
+  imgsz?: number;
+  conf?: number;
+}
+
+export async function inferVideoTrack(
+  videoFile: Blob,
+  options: TrackOptions = {}
+): Promise<TrackResult> {
+  const {
+    model = "yolov26",
+    tracker = "bytetrack",
+    imgsz = 960,
+    conf = 0.08,
+  } = options;
+  const client = await Client.connect(getSpaceUrl(), getClientOptions());
+  const result = await client.predict("/infer_video_track", [
+    videoFile,
+    model,
+    tracker,
+    imgsz,
+    conf,
+  ]);
+  const payload = (result.data as unknown[])[0] as TrackResult | undefined;
+  if (!payload || !Array.isArray(payload.rows)) {
+    throw new Error("Tracking returned no rows — the Space may have rejected the clip.");
+  }
+  return payload;
+}
